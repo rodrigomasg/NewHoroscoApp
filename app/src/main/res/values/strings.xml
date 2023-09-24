@@ -4,6 +4,22 @@
     <string name="menu_home">Horoscopo</string>
     <string name="menu_lucky">Lucky</string>
     <string name="menu_palmistry">Palmistry</string>
+
+    <!--    Horoscope-->
+    <string name="h_haries">Aries</string>
+    <string name="h_htauro">Taurus</string>
+    <string name="h_hgeminis">Gemini</string>
+    <string name="h_hcancer">Cancer</string>
+    <string name="h_hleo">Leo</string>
+    <string name="h_hvirgo">Virgo</string>
+    <string name="h_hlibra">Libra</string>
+    <string name="h_hescorpio">Scorpio</string>
+    <string name="h_hsagitario">Sagittarius</string>
+    <string name="h_hcapricornio">Capricorn</string>
+    <string name="h_haquario">Aquarius</string>
+    <string name="h_hpiscis">Pisces</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
