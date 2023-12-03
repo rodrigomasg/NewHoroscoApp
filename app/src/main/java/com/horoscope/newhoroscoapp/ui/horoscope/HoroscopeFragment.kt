@@ -10,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.horocope.newhoroscoapp.databinding.FragmentHoroscopeBinding
 import com.horoscope.newhoroscoapp.domain.model.HoroscopeInfo
+import com.horoscope.newhoroscoapp.domain.model.HoroscopeModel
 import com.horoscope.newhoroscoapp.ui.horoscope.adapter.HoroscopeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -43,7 +45,27 @@ class HoroscopeFragment : Fragment() {
     }
 
     private fun initList() {
-        adapterHoroscope = HoroscopeAdapter { show(it) }
+        adapterHoroscope = HoroscopeAdapter {
+//            show(it)
+            val type = when (it) {
+                HoroscopeInfo.Aquarius -> HoroscopeModel.Aquarius
+                HoroscopeInfo.Aries -> HoroscopeModel.Aries
+                HoroscopeInfo.Cancer -> HoroscopeModel.Cancer
+                HoroscopeInfo.Capricorn -> HoroscopeModel.Capricorn
+                HoroscopeInfo.Gemini -> HoroscopeModel.Gemini
+                HoroscopeInfo.Leo -> HoroscopeModel.Leo
+                HoroscopeInfo.Libra -> HoroscopeModel.Libra
+                HoroscopeInfo.Pisces -> HoroscopeModel.Pisces
+                HoroscopeInfo.Sagittarius -> HoroscopeModel.Sagittarius
+                HoroscopeInfo.Scorpio -> HoroscopeModel.Scorpio
+                HoroscopeInfo.Taurus -> HoroscopeModel.Taurus
+                HoroscopeInfo.Virgo -> HoroscopeModel.Virgo
+            }
+
+            findNavController().navigate(
+                HoroscopeFragmentDirections.actionNavHomeToHoroscopeDetailActivity(type)
+            )
+        }
         binding.rvHoroscope.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = adapterHoroscope
@@ -51,7 +73,10 @@ class HoroscopeFragment : Fragment() {
     }
 
     private fun show(horoscopeInfo: HoroscopeInfo) {
-        Toast.makeText(context, horoscopeInfo.toString(), Toast.LENGTH_LONG).show()
+//        Toast.makeText(context, horoscopeInfo.toString(), Toast.LENGTH_LONG).show()
+//        findNavController().navigate(
+//            HoroscopeFragmentDirections.actionNavHomeToHoroscopeDetailActivity()
+//        )
     }
 
     private fun initUIState() {
