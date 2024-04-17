@@ -1,13 +1,13 @@
-# ANDROID INTERMEDIO
+# ANDROID INTERMEDIO (Curso de Aristidev)
 
 <p align="center">
 <a href="https://youtube.com"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" style="height: 75%; width:75%;"/></center></a></p>
 
-En esta sección del curso, nos enfocaremos en enseñarte cómo escribir código de calidad. 
+En esta sección del curso, aprenderemos cómo escribir código de calidad. 
 
 ## Curso intermedio
 
-Curso en [TWITCH](https://www.twitch.tv/) y  [YOUTUBE](https://www.youtube.com/@aristidevs).
+-Encuentralo en: en [TWITCH](https://www.twitch.tv/) y  [YOUTUBE](https://www.youtube.com/@aristidevs).
 
 El temario del curso será:
 <br />
@@ -26,16 +26,7 @@ El temario del curso será:
 
 ---
 
-## Preguntas habituales.
-* **¿Cuando serán las clases?**
-    *  También puedes visitar [discord](https://discord.gg/) .
-
-* **¿Y si tengo dudas?**
-    * En [GOOGLE](https://google.com/)  **🖥-android**.
-
----
-
-## PROYECTO DEL CURSO DE ARISTIDEV.
+## PROYECTO, DEL CURSO DE ARISTIDEV.
 
 Referencias de .
 

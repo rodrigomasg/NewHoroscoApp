@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NewHoroscoApp</string>
+    <!--    all-->
+    <string name="all_img_des">imagen</string>
     <!--  menu_main  -->
     <string name="menu_home">Horoscopo</string>
     <string name="menu_lucky">Lucky</string>
@@ -22,4 +24,20 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Horoscope-->
+    <string name="haries">Aries</string>
+    <string name="htaurus">Taurus</string>
+    <string name="hgemini">Gemini</string>
+    <string name="hcancer">Cancer</string>
+    <string name="hleo">Leo</string>
+    <string name="hvirgo">Virgo</string>
+    <string name="hlibra">Libra</string>
+    <string name="hscorpio">Scorpio</string>
+    <string name="hsagittarius">Sagittarius</string>
+    <string name="hcapricorn">Capricorn</string>
+    <string name="haquarius">Aquarius</string>
+    <string name="hpisces">Pisces</string>
+
+
 </resources>

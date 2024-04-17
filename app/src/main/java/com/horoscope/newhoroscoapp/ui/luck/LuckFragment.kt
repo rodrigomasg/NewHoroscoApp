@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LuckFragment : Fragment() {
     private var _binding: FragmentLuckBinding? = null
     private val binding get() = _binding!!
-//    private val luckyViewModel by viewModels<LuckyViewModel>()
+    private val luckViewModel by viewModels<LuckViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
