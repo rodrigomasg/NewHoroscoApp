@@ -16,7 +16,7 @@
 
     <style name="Body">
         <item name="android:textColor"></item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 </resources>
