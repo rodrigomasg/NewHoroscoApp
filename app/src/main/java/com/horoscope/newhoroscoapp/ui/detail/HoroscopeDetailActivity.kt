@@ -1,17 +1,16 @@
 package com.horoscope.newhoroscoapp.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
-import com.horocope.newhoroscoapp.R
 import com.horocope.newhoroscoapp.databinding.ActivityHoroscopeDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -27,7 +26,8 @@ class HoroscopeDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        args.type
+        initUi()
+        viewModel.getHoroscope(args.type.name)
     }
 
     private fun initUi() {
@@ -41,22 +41,24 @@ class HoroscopeDetailActivity : AppCompatActivity() {
                     when (it) {
                         is DetailHoroscopeUiState.Error -> loadingState()
                         DetailHoroscopeUiState.Loading -> errState()
-                        is DetailHoroscopeUiState.Success -> successState()
+                        is DetailHoroscopeUiState.Success -> successState(it)
                     }
                 }
             }
         }
     }
 
-    private fun successState() {
-
+    private fun successState(state: DetailHoroscopeUiState.Success) {
+        binding.pgDetail.isVisible = false
+        binding.tvDetail.text = state.predictionModel?.sing
+        binding.tvDetailBody.text = state.predictionModel?.horoscope
     }
 
     private fun errState() {
-
+        binding.pgDetail.isVisible = false
     }
 
     private fun loadingState() {
-
+        binding.pgDetail.isVisible = true
     }
 }

@@ -2,6 +2,7 @@ package com.horoscope.newhoroscoapp.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.horoscope.newhoroscoapp.domain.model.PredictionModel
 import com.horoscope.newhoroscoapp.domain.usecase.GetPredictionUserCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -22,9 +23,12 @@ class HoroscopeDetailViewModel @Inject constructor(private val getPredictionUser
     fun getHoroscope(sign: String) {
         viewModelScope.launch {
             _state.value = DetailHoroscopeUiState.Loading
-            val result: Unit = withContext(Dispatchers.IO) { getPredictionUserCase(sign) }
-            if (result != null){
-                _state.value = DetailHoroscopeUiState.Success(result )
+            val result: PredictionModel? =
+                withContext(Dispatchers.IO) { getPredictionUserCase(sign) }
+            if (result != null) {
+                _state.value = DetailHoroscopeUiState.Success(result)
+            } else {
+                _state.value = DetailHoroscopeUiState.Error("Ha ocurrido un error")
             }
         }
     }
