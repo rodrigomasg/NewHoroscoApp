@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NewHoroscoApp</string>
+    <!--    all-->
+    <string name="all_img_des">imagen</string>
     <!--  menu_main  -->
     <string name="menu_home">Horoscopo</string>
     <string name="menu_lucky">Lucky</string>
