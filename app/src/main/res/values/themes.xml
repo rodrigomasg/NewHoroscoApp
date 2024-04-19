@@ -16,6 +16,7 @@
 
     <style name="Body">
         <item name="android:textColor"></item>
+        <item name="android:fontFamily">dancing_script</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">normal</item>
     </style>
