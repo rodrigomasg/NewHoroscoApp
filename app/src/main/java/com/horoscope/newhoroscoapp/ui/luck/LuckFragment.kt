@@ -1,6 +1,7 @@
 package com.horoscope.newhoroscoapp.ui.luck
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,16 +13,19 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnEnd
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.horocope.newhoroscoapp.R
 import com.horocope.newhoroscoapp.databinding.FragmentLuckBinding
+import com.horoscope.newhoroscoapp.ui.providers.RandomCardProvider
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LuckFragment : Fragment() {
     private var _binding: FragmentLuckBinding? = null
     private val binding get() = _binding!!
-    private val luckViewModel by viewModels<LuckViewModel>()
+
+    @Inject
+    lateinit var randomCardProvider: RandomCardProvider
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,17 +35,39 @@ class LuckFragment : Fragment() {
         return binding.root
     }
 
+
+    private fun initListeners() {
+        binding.luckIV.setOnClickListener { spinImg() }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
     }
 
     private fun initUI() {
+        preparePrediction()
         initListeners()
     }
 
-    private fun initListeners() {
-        binding.luckIV.setOnClickListener { spinImg() }
+    private fun preparePrediction() {
+        val luck = randomCardProvider.getLucky()
+        luck?.let {
+            val stringPred = getString(it.text)
+            binding.luckTvLucky.text = stringPred
+            binding.luckIvLucky.setImageResource(it.img)
+            binding.luckTvShare.setOnClickListener { shareRLucky(stringPred) }
+        }
+    }
+
+    private fun shareRLucky(pred: String) {
+        val intentShare = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, pred)
+            type = "text/plain"
+        }
+        val share = Intent.createChooser(intentShare, null)
+        startActivity(share)
     }
 
     private fun spinImg() {
