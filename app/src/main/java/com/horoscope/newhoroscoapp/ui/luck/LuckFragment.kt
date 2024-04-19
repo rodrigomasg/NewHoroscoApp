@@ -1,6 +1,7 @@
 package com.horoscope.newhoroscoapp.ui.luck
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.horocope.newhoroscoapp.R
 import com.horocope.newhoroscoapp.databinding.FragmentLuckBinding
+import com.horoscope.newhoroscoapp.ui.core.listener.OnSwipeListener
 import com.horoscope.newhoroscoapp.ui.providers.RandomCardProvider
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -35,11 +37,6 @@ class LuckFragment : Fragment() {
         return binding.root
     }
 
-
-    private fun initListeners() {
-        binding.luckIV.setOnClickListener { spinImg() }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
@@ -48,6 +45,20 @@ class LuckFragment : Fragment() {
     private fun initUI() {
         preparePrediction()
         initListeners()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun initListeners() {
+//        binding.luckIV.setOnClickListener { spinImg() }
+        binding.luckIV.setOnTouchListener(object : OnSwipeListener(requireContext()) {
+            override fun onSwipeRight() {
+                spinImg()
+            }
+
+            override fun onSwipeLeft() {
+                spinImg()
+            }
+        })
     }
 
     private fun preparePrediction() {
